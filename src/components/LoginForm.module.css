@@ -1,0 +1,60 @@
+.container {
+  width: 65%;
+  height: 100%;
+}
+
+.container form {
+  margin-top: 25%;
+}
+
+.inputs {
+  margin: auto;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs input {
+  height: 40px;
+  margin: 8px;
+  border-radius: 4px;
+  border: 0;
+  background-color: rgb(228, 226, 226);
+  padding-left: 0.5rem;
+}
+
+.actions {
+  margin-top: 0.5rem;
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 35%;
+}
+.actions p {
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1em;
+}
+.actions button {
+  border-radius: 5px;
+  height: 3rem;
+  border: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: black;
+  background-color: rgb(174, 240, 240);
+}
+.actions button p {
+  margin-left: 0rem;
+  padding-right: 0.8rem;
+  font-size: medium;
+  margin-top: 1rem;
+}
+.actions button span {
+  padding-left: 0rem;
+  width: 3rem;
+  font-size: medium;
+}

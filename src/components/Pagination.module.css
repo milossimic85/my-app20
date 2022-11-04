@@ -1,0 +1,9 @@
+.pagination {
+  margin-left: 50rem;
+}
+.nav {
+  display: inline-block;
+}
+.nav button {
+  width: 0.5rem;
+}
