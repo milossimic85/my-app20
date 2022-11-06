@@ -22,7 +22,7 @@ const LoginForm = () => {
 
     console.log({ username, password });
 
-    history.push("/start");
+    history.push("/login");
 
     //const response = fetch("http://localhost:3003/login", {
     // method: "POST",

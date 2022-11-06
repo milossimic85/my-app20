@@ -10,11 +10,16 @@ const StartPage = () => {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     const fetchPosts = async () => {
-      const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-      setPosts(res.data);
+      const res = await axios.get(
+        "https://jsonplaceholder.typicode.com/photos"
+      );
+      setLoading(false);
+      setPosts(res.data.slice(0, 100));
     };
     fetchPosts();
   }, []);
@@ -31,6 +36,7 @@ const StartPage = () => {
   return (
     <div className="container mt-5">
       <h1 className="text-primary mb-3">My Blog</h1>
+      {loading && <p>Loading...</p>}
       <Posts posts={currentPosts}></Posts>
       <div className={classes.pagination}>
         <Pagination

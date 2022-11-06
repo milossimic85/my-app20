@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import WelcomePage from "./pages/WelcomePage";
 import StartPage from "./pages/StartPage";
 import { Switch, Route, Redirect } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
       <Switch>
         <Route path="/" exact>
           <WelcomePage />
+        </Route>
+        <Route path="/login">
+          <LoginPage />
         </Route>
         <Route path="/start">
           <StartPage />
