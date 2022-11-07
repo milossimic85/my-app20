@@ -7,3 +7,21 @@
 .what {
   background-image: linear-gradient(to left, white, lightgray);
 }
+.header {
+  margin-top: 50px;
+  background-color: aqua;
+}
+.footer {
+  position: fixed;
+  height: 5rem;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: lightgrey;
+  color: lightgoldenrodyellow;
+  text-align: center;
+}
+
+.footer p {
+  margin-left: 20px;
+}

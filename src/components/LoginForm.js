@@ -59,7 +59,7 @@ const LoginForm = () => {
           ></input>
         </div>
         <div className={classes.actions}>
-          <p>Forgot Password?</p>
+          <p className={classes.text}>Forgot Password?</p>
           <button>
             <span>
               <FaStepForward />

@@ -13,3 +13,9 @@ figcaption {
   font-weight: bolder;
   color: white;
 }
+
+@media screen and (min-width: 80px) {
+  .img img {
+    display: block;
+  }
+}

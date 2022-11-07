@@ -3,6 +3,7 @@ import axios from "axios";
 import Posts from "../components/Posts";
 import Pagination from "../components/Pagination";
 import classes from "./StartPage.module.css";
+import Header1 from "../components/Header1";
 
 const { REACT_APP_JSON_PLACEHOLDER } = process.env;
 
@@ -34,16 +35,24 @@ const StartPage = () => {
 
   console.log(posts);
   return (
-    <div className="container mt-5">
-      <h1 className="text-primary mb-3">My Blog</h1>
-      {loading && <p>Loading...</p>}
-      <Posts posts={currentPosts}></Posts>
-      <div className={classes.pagination}>
-        <Pagination
-          postsPerPage={postsPerPage}
-          totalPosts={posts.length}
-          paginate={paginate}
-        />
+    <div>
+      <div className={classes.header}>
+        <Header1 />
+      </div>
+      <div className="container mt-5">
+        <h1 className="text-primary mb-3">My Blog</h1>
+        {loading && <p>Loading...</p>}
+        <Posts posts={currentPosts}></Posts>
+        <div className={classes.pagination}>
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={posts.length}
+            paginate={paginate}
+          />
+        </div>
+      </div>
+      <div className={classes.footer}>
+        <p>Design by Milos</p>
       </div>
     </div>
   );

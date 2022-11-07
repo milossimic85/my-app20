@@ -7,7 +7,11 @@ const Background = () => {
   return (
     <div className={classes.img}>
       <figure className="position-relative">
-        <img src={backgroundImage} alt="background"></img>
+        <img
+          className={classes.image1}
+          src={backgroundImage}
+          alt="background"
+        ></img>
         <figcaption>
           <h1>My project</h1>
           Welcome to your amazing app. Feel free to login and start managing
