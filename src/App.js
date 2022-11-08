@@ -1,11 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { Fragment } from "react";
+import { useEffect } from "react";
 import WelcomePage from "./pages/WelcomePage";
 import StartPage from "./pages/StartPage";
 import { Switch, Route, Redirect } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
-
+import { db, auth } from "./components/firebase/FirebaseInit";
 function App() {
   return (
     <div className="App">

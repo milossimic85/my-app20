@@ -82,3 +82,29 @@
     font-size: 2;
   }
 }
+.text1 {
+  margin-top: 0.5rem;
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 35%;
+}
+.text1 button {
+  margin-left: 0px;
+  border-radius: 5px;
+  height: 3rem;
+  border: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: black;
+  background-color: rgb(174, 240, 240);
+}
+.text1 button p {
+  margin-left: 0rem;
+  padding-right: 0.8rem;
+  font-size: medium;
+  margin-top: 1rem;
+}
