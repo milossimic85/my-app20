@@ -6,7 +6,10 @@ import StartPage from "./pages/StartPage";
 import { Switch, Route, Redirect } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import { db, auth } from "./components/firebase/FirebaseInit";
+import { useContext } from "react";
+import AuthContext from "./components/store/auth-context";
 function App() {
+  const AuthCtx = useContext(AuthContext);
   return (
     <div className="App">
       <Switch>
@@ -14,10 +17,15 @@ function App() {
           <WelcomePage />
         </Route>
         <Route path="/login">
-          <LoginPage />
+          {AuthCtx.isLogged && <LoginPage />}
+          {!AuthCtx.isLogged && <Redirect to="/" />}
         </Route>
         <Route path="/start">
-          <StartPage />
+          {AuthCtx.isLogged && <StartPage />}
+          {!AuthCtx.isLogged && <Redirect to="/" />}
+        </Route>
+        <Route path="*">
+          <Redirect to="/"></Redirect>
         </Route>
       </Switch>
     </div>

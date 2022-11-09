@@ -25,7 +25,6 @@ const LoginForm = () => {
     console.log({ email, password });
     try {
       await authCtx.login(email, password);
-
       history.push("/login");
     } catch (error) {
       toast.error("Please, insert email and password correctly!");
