@@ -1,8 +1,11 @@
 import React from "react";
 import classes from "./Header.module.css";
 import { useHistory } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "./store/auth-context";
 
 const Header1 = () => {
+  const AuthCtx = useContext(AuthContext);
   const history = useHistory();
   return (
     <header className={classes.header}>
@@ -12,6 +15,7 @@ const Header1 = () => {
           <li>
             <button
               onClick={() => {
+                AuthCtx.logout();
                 history.push("/");
               }}
             >

@@ -7,7 +7,7 @@ import { auth } from "../firebase/FirebaseInit";
 import { useState } from "react";
 
 const AuthContext = createContext({
-  isLogged: "",
+  isLogged: false,
   login: (email, password) => {},
   logout: () => {},
   signup: (email, password) => {},
@@ -15,14 +15,28 @@ const AuthContext = createContext({
 
 export const AuthContextProvider = (props) => {
   const [isLogged, setIsLogged] = useState(false);
+
+  //useEffect(() => {
+  // const storagedInformation = localStorage.getItem("email");
+  // console.log(storagedInformation);
+
+  // if (storagedInformation === "1") {
+  //  setIsLogged(true);
+  //   console.log(isLogged);
+  //  }
+  // }, [isLogged]);
+
   const loginHandler = (email, password) => {
-    localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
+    // localStorage.setItem("email", "1");
+    // localStorage.setItem("password", password);
     setIsLogged(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const logoutHandler = () => {};
+  const logoutHandler = () => {
+    //localStorage.removeItem("email");
+    //localStorage.removeItem("password");
+  };
 
   const signupHandler = ({ email, password }) => {
     return createUserWithEmailAndPassword(auth, email, password);

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import classes from "./LoginForm.module.css";
 import { FaStepForward } from "react-icons/fa";
@@ -10,18 +10,61 @@ import "react-toastify/dist/ReactToastify.css";
 
 const LoginForm = () => {
   const history = useHistory();
-  const inputUserNameRef = useRef();
-  const inputPasswordRef = useRef();
-  const inputEmailRef = useRef();
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState();
+  const [message1, setMessage1] = useState();
   const [show, setShow] = useState(true);
+  const [passwordIsValid, setPasswordIsValid] = useState(true);
+  const [emailIsValid, setEmailIsValid] = useState(true);
+  const [formIsValid, setFormIsValid] = useState();
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [enteredPassword, setEnteredPassword] = useState("");
+
+  useEffect(() => {
+    return () => {};
+  }, []);
+
+  useEffect(() => {
+    const identifier = setTimeout(() => {
+      console.log("Checking form validity!");
+      setEmailIsValid(true);
+      setPasswordIsValid(true);
+      setFormIsValid(
+        enteredEmail.includes("@") && enteredPassword.trim().length > 6
+      );
+      console.log(formIsValid);
+    }, 500);
+
+    return () => {
+      console.log("CLEANUP");
+      clearTimeout(identifier);
+    };
+  }, [enteredEmail, enteredPassword]);
+  const closeHandler = () => {
+    setShow(false);
+  };
+  const closeHandler1 = () => {
+    setShow(true);
+  };
+  const emailChangeHandler = (event) => {
+    setEnteredEmail(event.target.value);
+  };
+
+  const passwordChangeHandler = (event) => {
+    setEnteredPassword(event.target.value);
+  };
+  const validateEmailHandler = () => {
+    setEmailIsValid(enteredEmail.includes("@"));
+  };
+
+  const validatePasswordHandler = () => {
+    setPasswordIsValid(enteredPassword.trim().length > 6);
+  };
 
   const authCtx = useContext(AuthContext);
-
   const submitHandler = async (event) => {
     event.preventDefault();
-    const email = inputEmailRef.current.value;
-    const password = inputPasswordRef.current.value;
+    const email = enteredEmail;
+    const password = enteredPassword;
     console.log({ email, password });
     try {
       await authCtx.login(email, password);
@@ -29,14 +72,14 @@ const LoginForm = () => {
     } catch (error) {
       toast.error("Please, insert email and password correctly!");
     }
-    inputEmailRef.current.value = "";
-    inputPasswordRef.current.value = "";
+    //inputEmailRef.current.value = "";
+    //inputPasswordRef.current.value = "";
   };
   const submitHandler1 = async (event) => {
     event.preventDefault();
     //const username = inputUserNameRef.current.value;
-    const password = inputPasswordRef.current.value;
-    const email = inputEmailRef.current.value;
+    const password = event.target.value;
+    const email = event.target.value;
     console.log({ password, email });
     try {
       await authCtx.signup(email, password);
@@ -44,15 +87,6 @@ const LoginForm = () => {
     } catch (error) {
       toast.error(error.message);
     }
-    inputEmailRef.current.value = "";
-    inputPasswordRef.current.value = "";
-  };
-
-  const closeHandler = () => {
-    setShow(false);
-  };
-  const closeHandler1 = () => {
-    setShow(true);
   };
 
   return (
@@ -80,14 +114,35 @@ const LoginForm = () => {
           </p>
         )}
         <div className={classes.inputs}>
-          <input type="email" placeholder="Email" ref={inputEmailRef}></input>
-
+          <input
+            type="email"
+            className={
+              emailIsValid ? `${classes.input}` : `${classes.emailIsInvalid}`
+            }
+            placeholder="Email"
+            value={enteredEmail}
+            onChange={emailChangeHandler}
+            onBlur={validateEmailHandler}
+          ></input>
+          {!emailIsValid && (
+            <p className={classes.error}>*Email must contains @</p>
+          )}
           <input
             type="password"
+            className={
+              passwordIsValid
+                ? `${classes.input}`
+                : `${classes.passwordIsInvalid}`
+            }
             placeholder="Password"
-            ref={inputPasswordRef}
+            value={enteredPassword}
+            onChange={passwordChangeHandler}
+            onBlur={validatePasswordHandler}
           ></input>
         </div>
+        {!passwordIsValid && (
+          <p className={classes.error}>*Password must contains 6 characters</p>
+        )}
         <div className={show ? `${classes.actions}` : `${classes.text1}`}>
           {show && <p className={classes.text}>Forgot Password?</p>}
           {!show && (
@@ -95,7 +150,7 @@ const LoginForm = () => {
               Back to login
             </a>
           )}
-          <button>
+          <button disabled={!formIsValid}>
             <span>
               <FaStepForward />
             </span>
