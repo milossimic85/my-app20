@@ -133,6 +133,7 @@
 }
 .error {
   color: red;
+  font-size: 85%;
 }
 button:disabled {
   background: #ccc;

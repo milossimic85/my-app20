@@ -15,8 +15,7 @@ const Header1 = () => {
           <li>
             <button
               onClick={() => {
-                AuthCtx.logout();
-                history.push("/");
+                history.push("/login");
               }}
             >
               Logout

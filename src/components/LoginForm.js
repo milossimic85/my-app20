@@ -78,15 +78,16 @@ const LoginForm = () => {
   const submitHandler1 = async (event) => {
     event.preventDefault();
     //const username = inputUserNameRef.current.value;
-    const password = event.target.value;
-    const email = event.target.value;
+    const password = enteredPassword;
+    const email = enteredEmail;
     console.log({ password, email });
     try {
       await authCtx.signup(email, password);
-      toast.success("New user add!");
     } catch (error) {
       toast.error(error.message);
     }
+    setEnteredEmail("");
+    setEnteredPassword("");
   };
 
   return (
@@ -125,7 +126,9 @@ const LoginForm = () => {
             onBlur={validateEmailHandler}
           ></input>
           {!emailIsValid && (
-            <p className={classes.error}>*Email must contains @</p>
+            <p className={classes.error}>
+              <i>*Email must contain @*</i>
+            </p>
           )}
           <input
             type="password"
@@ -141,7 +144,9 @@ const LoginForm = () => {
           ></input>
         </div>
         {!passwordIsValid && (
-          <p className={classes.error}>*Password must contains 6 characters</p>
+          <p className={classes.error}>
+            <i>*Password must contain 6 characters*</i>
+          </p>
         )}
         <div className={show ? `${classes.actions}` : `${classes.text1}`}>
           {show && <p className={classes.text}>Forgot Password?</p>}
