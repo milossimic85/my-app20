@@ -18,7 +18,7 @@ const Header1 = () => {
                 history.push("/login");
               }}
             >
-              Logout
+              Back to start!
             </button>
           </li>
         </ul>

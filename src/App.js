@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage";
 import { db, auth } from "./components/firebase/FirebaseInit";
 import { useContext } from "react";
 import AuthContext from "./components/store/auth-context";
+import TablePage from "./pages/TablePage";
 function App() {
   const history = useHistory();
   const [isLog, setIsLog] = useState(false);
@@ -18,13 +19,18 @@ function App() {
       <Switch>
         <Route path="/" exact>
           <WelcomePage />
+          {AuthCtx.isLogged && <Redirect to="/login" />}"
         </Route>
 
         <Route path="/login">{AuthCtx.isLogged && <LoginPage />}</Route>
 
         <Route path="/start">
           {AuthCtx.isLogged && <StartPage />}
-          {!AuthCtx.isLogged && <Redirect to="/" />}
+          {!AuthCtx.isLogged && <Redirect to="/start" />}
+        </Route>
+        <Route path="/table">
+          {AuthCtx.isLogged && <TablePage />}
+          {!AuthCtx.isLogged && <Redirect to="/table" />}
         </Route>
         <Route path="*">
           <Redirect to="/"></Redirect>

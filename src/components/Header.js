@@ -13,7 +13,13 @@ const Header = () => {
       <nav>
         <ul className={classes.actions}>
           <li>
-            <button>InstaPage</button>
+            <button
+              onClick={() => {
+                history.push("/table");
+              }}
+            >
+              Table
+            </button>
           </li>
           <li>
             <button
