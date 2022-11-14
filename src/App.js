@@ -9,6 +9,7 @@ import { db, auth } from "./components/firebase/FirebaseInit";
 import { useContext } from "react";
 import AuthContext from "./components/store/auth-context";
 import TablePage from "./pages/TablePage";
+import TablePage2 from "./pages/TablePage2";
 function App() {
   const history = useHistory();
   const [isLog, setIsLog] = useState(false);
@@ -31,6 +32,10 @@ function App() {
         <Route path="/table">
           {AuthCtx.isLogged && <TablePage />}
           {!AuthCtx.isLogged && <Redirect to="/table" />}
+        </Route>
+        <Route path="/table2">
+          {AuthCtx.isLogged && <TablePage2 />}
+          {!AuthCtx.isLogged && <Redirect to="/table2" />}
         </Route>
         <Route path="*">
           <Redirect to="/"></Redirect>

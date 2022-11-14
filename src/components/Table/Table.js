@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { FaAddressBook } from "react-icons/fa";
 import TableData from "./TableData";
 
 const Table = () => {
@@ -17,6 +18,7 @@ const Table = () => {
     { heading: "Name", value: "name" },
     { heading: "Email", value: "email" },
     { heading: "Phone", value: "phone" },
+    { heading: "City", value: "address.city" },
   ];
   return (
     <div>

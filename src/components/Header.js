@@ -15,6 +15,15 @@ const Header = () => {
           <li>
             <button
               onClick={() => {
+                history.push("/table2");
+              }}
+            >
+              Table 2
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => {
                 history.push("/table");
               }}
             >

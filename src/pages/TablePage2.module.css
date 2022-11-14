@@ -1,0 +1,31 @@
+.place {
+  margin: 0 auto;
+}
+.header {
+  margin-left: 0px;
+  margin-top: 140px;
+  background-color: aqua;
+}
+.container mt-5 {
+  margin-right: 50%;
+  margin-left: 50%;
+  border: none;
+}
+.table {
+  margin-left: 0 auto;
+  height: 600px;
+}
+.footer {
+  position: fixed;
+  height: 5rem;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: lightgrey;
+  color: lightgoldenrodyellow;
+  text-align: center;
+}
+
+.footer p {
+  margin-left: 20px;
+}
